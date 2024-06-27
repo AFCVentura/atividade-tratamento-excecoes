@@ -12,12 +12,23 @@ namespace ConsoleApp1
 
             for (int i = 0; i >= 0; i++) {
                 Console.WriteLine($"Digite o {i+1}º número: ");
-                int n1 = int.Parse(Console.ReadLine());
-                vetor[i] = n1;
+                try
+                {
+                    int n1 = int.Parse(Console.ReadLine());
+                    vetor[i] = n1;
+                }
 
-                System.Console.WriteLine("Quer digitar mais um número? (s/n)");
-                System.Console.WriteLine($"Tamanho do vetor: {quant}");
-                System.Console.WriteLine($"Números digitados: {i + 1}");
+                catch (FormatException) {
+                    Console.WriteLine("Erro: valor inválido. Por favor, digite um número inteiro.");
+                    i--; 
+                    continue;
+
+                }
+                {
+                    System.Console.WriteLine("Quer digitar mais um número? (s/n)");
+                    System.Console.WriteLine($"Tamanho do vetor: {quant}");
+                    System.Console.WriteLine($"Números digitados: {i + 1}");
+                }
 
                 if (Console.ReadLine().ToUpper() == "S") {
                     continue;
