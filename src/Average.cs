@@ -1,15 +1,13 @@
-namespace ConsoleApp1
+
+internal class Average
 {
-    public class Average
+    public double CalcularMedia(int[] vetor)
     {
-        public int CalcularMedia(int quant, int[] numbers) {
-            int result = 0;
-            foreach (var number in numbers) 
-            {
-                result += number;
-            }
-            
-            return result / quant;
+        double soma = 0;
+        foreach (int num in vetor)
+        {
+            soma += num;
         }
+        return soma / vetor.Length;
     }
 }

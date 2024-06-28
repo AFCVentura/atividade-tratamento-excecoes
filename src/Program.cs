@@ -1,5 +1,4 @@
-﻿
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
     internal class Program
     {
@@ -7,31 +6,65 @@ namespace ConsoleApp1
         {
             Average calc = new Average();
             Console.WriteLine("Você quer calcular a média de quantos números?");
-            int quant = int.Parse(Console.ReadLine());
-            int[] vetor = new int[quant];
 
-            for (int i = 0; i >= 0; i++) {
-                Console.WriteLine($"Digite o {i+1}º número: ");
-                int n1 = int.Parse(Console.ReadLine());
-                vetor[i] = n1;
-
-                System.Console.WriteLine("Quer digitar mais um número? (s/n)");
-                System.Console.WriteLine($"Tamanho do vetor: {quant}");
-                System.Console.WriteLine($"Números digitados: {i + 1}");
-
-                if (Console.ReadLine().ToUpper() == "S") {
-                    continue;
-                }
-                else if (Console.ReadLine().ToUpper() == "N") {
+            int quant;
+            while (true)
+            {
+                try
+                {
+                    quant = int.Parse(Console.ReadLine());
                     break;
                 }
-                else {
-                    System.Console.WriteLine("Digite um valor válido");
-                    continue;
+                catch (FormatException)
+                {
+                    Console.WriteLine("Erro: Você deve digitar um número inteiro. Tente novamente!");
                 }
             }
-            Console.WriteLine(calc.CalcularMedia(quant, vetor));
-            
+
+            int[] vetor = new int[quant];
+            for (int i = 0; i < quant; i++)
+            {
+                Console.WriteLine($"Digite o {i+1}º número: ");
+                int n1;
+                while (true)
+                {
+                    try
+                    {
+                        n1 = int.Parse(Console.ReadLine());
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Erro: Você deve digitar um número inteiro. Tente novamente!");
+                    }
+                }
+                vetor[i] = n1;
+            }
+
+            Console.WriteLine("Você deseja calcular a média com esses números? (s/n)");
+            string resposta;
+            while (true)
+            {
+                resposta = Console.ReadLine().ToUpper();
+                if (resposta == "S" || resposta == "N")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Você deve digitar 'S' ou 'N'. Tente novamente!");
+                }
+            }
+
+            if (resposta == "S")
+            {
+                Console.WriteLine($"Media: {calc.CalcularMedia(vetor)}");
+            }
+            else
+            {
+                Console.WriteLine("Ok, vamos começar novamente!");
+                Main(args);
+            }
         }
     }
 }
