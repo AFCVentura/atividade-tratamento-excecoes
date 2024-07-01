@@ -19,10 +19,12 @@ namespace ConsoleApp1
                 System.Console.WriteLine($"Tamanho do vetor: {quant}");
                 System.Console.WriteLine($"Números digitados: {i + 1}");
 
-                if (Console.ReadLine().ToUpper() == "S") {
+                string resposta = Console.ReadLine();
+
+                if (resposta.ToUpper() == "S") {
                     continue;
                 }
-                else if (Console.ReadLine().ToUpper() == "N") {
+                else if (resposta.ToUpper() == "N") {
                     break;
                 }
                 else {
