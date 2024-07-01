@@ -7,10 +7,11 @@ namespace ConsoleApp1
         {
             try
             {
-            Average calc = new Average();
-            Console.WriteLine("Você quer calcular a média de quantos números?");
-            int quant = int.Parse(Console.ReadLine());
-            int[] vetor = new int[quant];
+              Average calc = new Average();
+              Console.WriteLine("Você quer calcular a média de quantos números?");
+              int quant = int.Parse(Console.ReadLine());
+              int[] vetor = new int[quant];
+
                 for (int i = 0; i >= 0; i++)
                 {
                     Console.WriteLine($"Digite o {i + 1}º número: ");
@@ -32,6 +33,7 @@ namespace ConsoleApp1
                         Console.WriteLine(calc.CalcularMedia(quant, vetor));
                         break;
                     }
+
                     else
                     {
                         System.Console.WriteLine("Digite um valor válido");
