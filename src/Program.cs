@@ -54,6 +54,11 @@ namespace ConsoleApp1
                 Console.WriteLine("Você digitou um caractere não esperado, digite apenas números!");
                 Console.WriteLine("Erro: " + ex.Message);
             }
+            catch (OverflowException ex)
+            {
+                Console.WriteLine("Voce digitou um numero muito grande");
+                Console.WriteLine("Erro: " + ex.Message);
+            }
         }
     }
 }
