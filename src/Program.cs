@@ -5,33 +5,43 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Average calc = new Average();
-            Console.WriteLine("Você quer calcular a média de quantos números?");
-            int quant = int.Parse(Console.ReadLine());
-            int[] vetor = new int[quant];
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Calculadora de Média");
+                Console.Write("Digite a quantidade de números que quer calcular a média: ");
+                int quantidadeNumeros = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 0; i >= 0; i++) {
-                Console.WriteLine($"Digite o {i+1}º número: ");
-                int n1 = int.Parse(Console.ReadLine());
-                vetor[i] = n1;
+                List<double> numeros = new List<double>();
 
-                System.Console.WriteLine("Quer digitar mais um número? (s/n)");
-                System.Console.WriteLine($"Tamanho do vetor: {quant}");
-                System.Console.WriteLine($"Números digitados: {i + 1}");
+                for (int i = 0; i < quantidadeNumeros; i++)
+                {
+                    Console.Write("Digite o número {0}: ", i + 1);
+                    double numero = Convert.ToDouble(Console.ReadLine());
+                    numeros.Add(numero);
+                }
 
-                if (Console.ReadLine().ToUpper() == "S") {
-                    continue;
-                }
-                else if (Console.ReadLine().ToUpper() == "N") {
-                    break;
-                }
-                else {
-                    System.Console.WriteLine("Digite um valor válido");
-                    continue;
-                }
+                double media = CalcularMedia(numeros);
+
+                Console.WriteLine($"A média é: {media:F2}");
+            } 
+
+            if (Console.ReadLine().ToUpper() == "S")
+            {
+            continue;
+            }
+            else if (Console.ReadLine().ToUpper() == "N")
+            {
+                break;
+            }
+            else
+            {
+                System.Console.WriteLine("Digite um valor válido");
+                continue;
+            }
             }
             Console.WriteLine(calc.CalcularMedia(quant, vetor));
-            
         }
-    }
+
 }
+    
+
