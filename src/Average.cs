@@ -2,14 +2,15 @@ namespace ConsoleApp1
 {
     public class Average
     {
-        public int CalcularMedia(int quant, int[] numbers) {
+        public double CalcularMedia(int[] numbers)
+        {
             int result = 0;
-            foreach (var number in numbers) 
+            foreach (var number in numbers)
             {
                 result += number;
             }
-            
-            return result / quant;
+
+            return numbers.Length > 0 ? (double)result / numbers.Length : 0;
         }
     }
 }
