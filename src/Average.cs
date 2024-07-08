@@ -1,15 +1,17 @@
-namespace ConsoleApp1
+public class Average
 {
-    public class Average
+    public double CalcularMedia(int quant, int[] numbers)
     {
-        public int CalcularMedia(int quant, int[] numbers) {
+        {
+            if (quant <= 0 || numbers == null || numbers.Length < quant)
+            {
+                throw new ArgumentException("Quantidade inválida ou array de números inválido.");
+            }
+
             int result = 0;
-            foreach (var number in numbers) 
+            foreach (int number in numbers)
             {
                 result += number;
             }
-            
-            return result / quant;
-        }
-    }
-}
+
+            return (double)result / quant;
