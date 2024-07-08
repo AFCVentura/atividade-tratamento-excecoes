@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace ConsoleApp1
 {
     internal class Program
@@ -11,7 +12,9 @@ namespace ConsoleApp1
             int[] vetor = new int[quant];
             int i = 0;
 
-            while (true)
+            int i = 0;
+            while (i < quant)
+
             {
                 Console.WriteLine($"Digite o {i + 1}º número: ");
                 int n1 = int.Parse(Console.ReadLine());
@@ -25,24 +28,37 @@ namespace ConsoleApp1
 
                 if (resposta == "S")
                 {
-                    i++; 
-                    if (i >= quant)
+                    if (i < quant - 1)
                     {
-                        Console.WriteLine("Você já digitou todos os números necessários.");
+                        i++;
+                    }
+                    else
+                    {
+
                         break;
                     }
                 }
                 else if (resposta == "N")
                 {
-                    break; 
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("Digite um valor válido (S ou N).");
+                    Console.WriteLine("Digite um valor válido");
                 }
             }
 
-            Console.WriteLine(calc.CalcularMedia(quant, vetor));
+            Console.WriteLine($"A média é: {calc.CalcularMedia(vetor)}");
         }
     }
-}
+   
+        public double CalcularMedia(int[] numeros)
+        {
+            int soma = 0;
+            foreach (int num in numeros)
+            {
+                soma += num;
+            }
+            return (double)soma / numeros.Length;
+        }
+    }
