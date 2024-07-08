@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace ConsoleApp1
 {
     internal class Program
@@ -10,28 +11,51 @@ namespace ConsoleApp1
             int quant = int.Parse(Console.ReadLine());
             int[] vetor = new int[quant];
 
-            for (int i = 0; i >= 0; i++) {
-                Console.WriteLine($"Digite o {i+1}º número: ");
+            int i = 0;
+            while (i < quant)
+            {
+                Console.WriteLine($"Digite o {i + 1}º número: ");
                 int n1 = int.Parse(Console.ReadLine());
                 vetor[i] = n1;
 
-                System.Console.WriteLine("Quer digitar mais um número? (s/n)");
-                System.Console.WriteLine($"Tamanho do vetor: {quant}");
-                System.Console.WriteLine($"Números digitados: {i + 1}");
+                Console.WriteLine("Quer digitar mais um número? (s/n)");
+                Console.WriteLine($"Tamanho do vetor: {quant}");
+                Console.WriteLine($"Números digitados: {i + 1}");
 
-                if (Console.ReadLine().ToUpper() == "S") {
-                    continue;
+                string resposta = Console.ReadLine().ToUpper();
+                if (resposta == "S")
+                {
+                    if (i < quant - 1)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Você já atingiu o número máximo de entradas.");
+                        break;
+                    }
                 }
-                else if (Console.ReadLine().ToUpper() == "N") {
+                else if (resposta == "N")
+                {
                     break;
                 }
-                else {
-                    System.Console.WriteLine("Digite um valor válido");
-                    continue;
+                else
+                {
+                    Console.WriteLine("Digite um valor válido");
                 }
             }
-            Console.WriteLine(calc.CalcularMedia(quant, vetor));
-            
+
+            Console.WriteLine($"A média é: {calc.CalcularMedia(vetor)}");
         }
     }
-}
+   
+        public double CalcularMedia(int[] numeros)
+        {
+            int soma = 0;
+            foreach (int num in numeros)
+            {
+                soma += num;
+            }
+            return (double)soma / numeros.Length;
+        }
+    }
