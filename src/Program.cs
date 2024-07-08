@@ -5,33 +5,46 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Average calc = new Average();
-            Console.WriteLine("Você quer calcular a média de quantos números?");
-            int quant = int.Parse(Console.ReadLine());
-            int[] vetor = new int[quant];
+            while (true)
+            {
+                try
+                {
+                    Average calc = new Average();
+                    Console.WriteLine("Você quer calcular a média de quantos números?");
+                    int quant = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i >= 0; i++) {
-                Console.WriteLine($"Digite o {i+1}º número: ");
-                int n1 = int.Parse(Console.ReadLine());
-                vetor[i] = n1;
+                    if (quant <= 0)
+                    {
+                        throw new ArgumentException("A quantidade de números deve ser maior que zero.");
+                    }
 
-                System.Console.WriteLine("Quer digitar mais um número? (s/n)");
-                System.Console.WriteLine($"Tamanho do vetor: {quant}");
-                System.Console.WriteLine($"Números digitados: {i + 1}");
+                    int[] vetor = new int[quant];
 
-                if (Console.ReadLine().ToUpper() == "S") {
-                    continue;
+                    for (int i = 0; i < quant; i++)
+                    {
+                        Console.WriteLine($"Digite o {i + 1}º número: ");
+                        vetor[i] = int.Parse(Console.ReadLine());
+                    }
+
+                    double media = calc.CalcularMedia(quant, vetor);
+                    Console.WriteLine("A média é: " + media);
                 }
-                else if (Console.ReadLine().ToUpper() == "N") {
+                catch (FormatException)
+                {
+                    Console.WriteLine("Entrada inválida. Por favor, digite um número válido.");
+                }
+<<<<<<< João
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+>>>>>>> main
+                Console.WriteLine("Deseja calcular a média de outro conjunto de números? (s/n)");
+                if (Console.ReadLine().ToUpper() != "S")
+                {
                     break;
                 }
-                else {
-                    System.Console.WriteLine("Digite um valor válido");
-                    continue;
-                }
             }
-            Console.WriteLine(calc.CalcularMedia(quant, vetor));
-            
         }
     }
 }
