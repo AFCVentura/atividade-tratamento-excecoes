@@ -33,14 +33,12 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("Entrada inválida. Por favor, digite um número válido.");
                 }
+<<<<<<< João
                 catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
-              
-                
-                
-                
+>>>>>>> main
                 Console.WriteLine("Deseja calcular a média de outro conjunto de números? (s/n)");
                 if (Console.ReadLine().ToUpper() != "S")
                 {
