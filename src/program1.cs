@@ -14,12 +14,25 @@ namespace ConsoleApp1
 
             for (int i = 0; i < vetor.Length; i++)
             {
-                Console.WriteLine($"Digite o {i + 1}º número: ");
-                int n1 = int.Parse(Console.ReadLine());
-                vetor[i] = n1;
+                try
+                {
+                    Console.WriteLine($"Digite o {i + 1}º número: ");
+                    int n1 = int.Parse(Console.ReadLine());
+                    vetor[i] = n1;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Entrada inválida. Por favor, digite um número inteiro.");
+                    i--;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ocorreu um erro inesperado.");
+                    break;
+                }
             }
 
-                System.Console.WriteLine("Quer digitar mais um número? (s/n)");
+            System.Console.WriteLine("Quer digitar mais um número? (s/n)");
                 System.Console.WriteLine($"Tamanho do vetor: {quant}");
                 System.Console.WriteLine($"Números digitados: {i + 1}");
 
