@@ -10,9 +10,11 @@ namespace ConsoleApp1
             Console.WriteLine("Você quer calcular a média de quantos números?");
             int quant = int.Parse(Console.ReadLine());
             int[] vetor = new int[quant];
+            int i = 0;
 
             int i = 0;
             while (i < quant)
+
             {
                 Console.WriteLine($"Digite o {i + 1}º número: ");
                 int n1 = int.Parse(Console.ReadLine());
@@ -23,6 +25,7 @@ namespace ConsoleApp1
                 Console.WriteLine($"Números digitados: {i + 1}");
 
                 string resposta = Console.ReadLine().ToUpper();
+
                 if (resposta == "S")
                 {
                     if (i < quant - 1)
@@ -31,7 +34,7 @@ namespace ConsoleApp1
                     }
                     else
                     {
-                        Console.WriteLine("Você já atingiu o número máximo de entradas.");
+
                         break;
                     }
                 }
