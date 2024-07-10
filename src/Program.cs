@@ -45,6 +45,7 @@ namespace ConsoleApp1
             }
 
             Console.WriteLine($"A média é: {calc.CalcularMedia(quant, vetor)}");
+            //fazendo um mudança para lançar uma mudança
         }
     }
 
