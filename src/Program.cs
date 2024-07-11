@@ -10,28 +10,45 @@ namespace ConsoleApp1
             int quant = int.Parse(Console.ReadLine());
             int[] vetor = new int[quant];
 
-            for (int i = 0; i >= 0; i++) {
-                Console.WriteLine($"Digite o {i+1}º número: ");
-                int n1 = int.Parse(Console.ReadLine());
-                vetor[i] = n1;
+            try
+            {
+                for (int i = 0; i < quant; i++)
+                {
+                    Console.WriteLine($"Digite o {i + 1}º número: ");
+                    int n1 = int.Parse(Console.ReadLine());
+                    vetor[i] = n1;
 
-                System.Console.WriteLine("Quer digitar mais um número? (s/n)");
-                System.Console.WriteLine($"Tamanho do vetor: {quant}");
-                System.Console.WriteLine($"Números digitados: {i + 1}");
+                    Console.WriteLine("Quer digitar mais um número? (s/n)");
+                    Console.WriteLine($"Tamanho do vetor: {quant}");
+                    Console.WriteLine($"Números digitados: {i + 1}");
 
-                if (Console.ReadLine().ToUpper() == "S") {
-                    continue;
+                    string resposta = Console.ReadLine().ToUpper();
+                    if (resposta == "S")
+                    {
+                        continue;
+                    }
+                    else if (resposta == "N")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Digite um valor válido (s/n)");
+                        i--; 
+                    }
                 }
-                else if (Console.ReadLine().ToUpper() == "N") {
-                    break;
-                }
-                else {
-                    System.Console.WriteLine("Digite um valor válido");
-                    continue;
-                }
+
             }
-            Console.WriteLine(calc.CalcularMedia(quant, vetor));
-            
+            catch (FormatException)
+            {
+                Console.WriteLine("Formato inválido. Digite um número inteiro.");
+            }
+
+            Console.WriteLine($"A média é: {calc.CalcularMedia(quant, vetor)}");
+            //fazendo um mudança para lançar uma mudança
         }
     }
+
 }
+    
+
