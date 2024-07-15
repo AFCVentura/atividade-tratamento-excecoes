@@ -10,10 +10,10 @@ namespace ConsoleApp1
             int quant = int.Parse(Console.ReadLine());
             int[] vetor = new int[quant];
 
-            for (int i = 0; i >= 0; i++) {
+            for (int j = 0; i >= 0; i++) {
                 Console.WriteLine($"Digite o {i+1}º número: ");
                 int n1 = int.Parse(Console.ReadLine());
-                vetor[i] = n1;
+                vetor[j] = n1;
 
                 System.Console.WriteLine("Quer digitar mais um número? (s/n)");
                 System.Console.WriteLine($"Tamanho do vetor: {quant}");
